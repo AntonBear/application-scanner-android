@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/applicationListFragment">
+
+    <fragment
+        android:id="@+id/applicationListFragment"
+        android:name="com.holzed.applicationscanner.ui.applicationlist.ApplicationListFragment"
+        android:label="ApplicationListFragment"
+        tools:layout="@layout/fragment_application_list" >
+        <action
+            android:id="@+id/action_applicationListFragment_to_appDetailFragment"
+            app:destination="@id/appDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appDetailFragment"
+        android:name="com.holzed.applicationscanner.ui.appdetail.AppDetailFragment"
+        android:label="AppDetailFragment"
+        tools:layout="@layout/fragment_app_detail">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="version"
+            app:argType="string" />
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+        <argument
+            android:name="apkHash"
+            app:argType="string" />
+    </fragment>
+</navigation>

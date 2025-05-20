@@ -1,0 +1,225 @@
+build:
+  maxIssues: 0
+  weights:
+    complexity: 2
+    LongParameterList: 1
+    style: 1
+
+processors:
+  active: true
+  exclude:
+    - 'FunctionCountProcessor'
+    - 'PropertyCountProcessor'
+
+config:
+  validation: true
+
+comments:
+  OutdatedDocumentation:
+    active: true
+
+complexity:
+  CognitiveComplexMethod:
+    active: true
+  ComplexCondition:
+    active: true
+  ComplexInterface:
+    active: true
+  CyclomaticComplexMethod:
+    active: true
+  LabeledExpression:
+    active: false
+  LargeClass:
+    active: true
+    threshold: 1000
+  LongMethod:
+    active: true
+    threshold: 60
+  LongParameterList:
+    active: true
+  MethodOverloading:
+    active: true
+  NamedArguments:
+    active: true
+  NestedBlockDepth:
+    active: true
+    threshold: 4
+  NestedScopeFunctions:
+    active: true
+    threshold: 2
+  ReplaceSafeCallChainWithRun:
+    active: true
+  StringLiteralDuplication:
+    active: false # TODO: Включить
+  TooManyFunctions:
+    active: true
+    thresholdInClasses: 11
+    thresholdInInterfaces: 11
+    thresholdInObjects: 11
+    thresholdInEnums: 11
+
+coroutines:
+  GlobalCoroutineUsage:
+    active: true
+  InjectDispatcher:
+    active: true
+  RedundantSuspendModifier:
+    active: true
+  SleepInsteadOfDelay:
+    active: true
+  SuspendFunSwallowedCancellation:
+    active: true
+  SuspendFunWithCoroutineScopeReceiver:
+    active: true
+  SuspendFunWithFlowReturnType:
+    active: true
+
+empty-blocks:
+  EmptyClassBlock:
+    active: false
+  EmptyFunctionBlock:
+    active: true
+
+formatting:
+  active: true
+  AnnotationOnSeparateLine:
+    active: true
+  AnnotationSpacing:
+    active: true
+  ArgumentListWrapping:
+    active: true
+  BlockCommentInitialStarAlignment:
+    active: true
+  ChainWrapping:
+    active: true
+  ClassName:
+    active: true
+  CommentSpacing:
+    active: true
+  CommentWrapping:
+    active: true
+  ContextReceiverMapping:
+    active: true
+  DiscouragedCommentLocation:
+    active: true
+  EnumEntryNameCase:
+    active: true
+  EnumWrapping:
+    active: true
+  Filename:
+    active: true
+  FinalNewline:
+    active: true
+  FunKeywordSpacing:
+    active: true
+  FunctionName:
+    active: true
+  FunctionReturnTypeSpacing:
+    active: true
+  FunctionSignature:
+    active: true
+    forceMultilineWhenParameterCountGreaterOrEqualThan: 4
+  FunctionStartOfBodySpacing:
+    active: true
+  FunctionTypeReferenceSpacing:
+    active: true
+  IfElseBracing:
+    active: true
+  IfElseWrapping:
+    active: true
+  ImportOrdering:
+    active: true
+  Indentation:
+    active: true
+  KdocLeadingAsterisk:
+    active: true
+  KdocWrapping:
+    active: true
+  MaximumLineLength:
+    active: true
+  ModifierListSpacing:
+    active: true
+  ModifierOrdering:
+    active: true
+  PackageName:
+    active: true
+  ParameterListSpacing:
+    active: true
+  ParameterListWrapping:
+    active: true
+  SpacingAroundAngleBrackets:
+    active: true
+  SpacingAroundColon:
+    active: true
+  SpacingAroundComma:
+    active: true
+  SpacingAroundCurly:
+    active: true
+  SpacingAroundDot:
+    active: true
+  SpacingAroundDoubleColon:
+    active: true
+  SpacingAroundKeyword:
+    active: true
+  SpacingAroundOperators:
+    active: true
+  SpacingAroundParens:
+    active: true
+  SpacingAroundRangeOperator:
+    active: true
+  SpacingAroundUnaryOperator:
+    active: true
+  SpacingBetweenDeclarationsWithAnnotations:
+    active: true
+  SpacingBetweenDeclarationsWithComments:
+    active: true
+  StringTemplate:
+    active: true
+  TrailingCommaOnCallSite:
+    active: true
+  TrailingCommaOnDeclarationSite:
+    active: true
+  TryCatchFinallySpacing:
+    active: true
+  TypeArgumentListSpacing:
+    active: true
+  TypeParameterListSpacing:
+    active: true
+  UnnecessaryParenthesesBeforeTrailingLambda:
+    active: true
+  Wrapping:
+    active: true
+
+
+style:
+  MagicNumber:
+    active: true
+    ignoreNumbers: ["-1", "0", "1", "2"]
+    ignoreHashCodeFunction: true
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
+  UnusedPrivateMember:
+    active: true
+  ForbiddenComment:
+    active: false
+  TrailingWhitespace:
+    active: true
+  UseDataClass:
+    active: true
+  UnusedImports:
+    active: true
+
+naming:
+  FunctionNaming:
+    active: true
+  VariableNaming:
+    active: true
+  ClassNaming:
+    active: true
+
+potential-bugs:
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+  EqualsWithHashCodeExist:
+    active: true

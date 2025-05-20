@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Application Scanner</string>
+    <string name="title">Title</string>
+    <string name="list_apps">Application List</string>
+    <string name="cannot_launch_app">Cannot launch app</string>
+    <string name="launch_app_button">Launch App</string>
+    <string name="app_detail">App detail</string>
+    <string name="version_prefix">Version: %1$s</string>
+    <string name="hash_prefix">MD5: %1$s</string>
+</resources>

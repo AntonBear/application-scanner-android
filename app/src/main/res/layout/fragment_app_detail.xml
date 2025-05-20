@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/app_detail"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/s"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/s"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:strokeColor="@color/md_theme_outline"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/m">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/appTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/text_size_title"
+                android:textStyle="bold"
+                tools:text="App Title"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/appVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_subValue"
+                tools:text="Version: 1.0 (100)"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/appPackage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_subValue"
+                tools:text="com.example.app"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/appHash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_size_subValue"
+                tools:text="SHA-256: ABCDEF..."/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLaunchApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/s"
+                android:text="@string/launch_app_button" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
