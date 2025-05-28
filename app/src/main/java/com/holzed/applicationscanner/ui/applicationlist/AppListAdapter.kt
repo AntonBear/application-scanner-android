@@ -36,7 +36,7 @@ class AppListAdapter(private val onClick: (AppItemModel) -> Unit) :
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<AppItemModel>() {
             override fun areItemsTheSame(oldItem: AppItemModel, newItem: AppItemModel): Boolean {
-                return oldItem.title == newItem.title && oldItem.apkHash == newItem.apkHash
+                return oldItem.sourceDir == newItem.sourceDir
             }
 
             override fun areContentsTheSame(oldItem: AppItemModel, newItem: AppItemModel): Boolean {

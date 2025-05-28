@@ -17,14 +17,16 @@ class ApplicationListFragment : Fragment(R.layout.fragment_application_list) {
     private var _binding: FragmentApplicationListBinding? = null
     private val binding get() = _binding!!
     val appListAdapter = AppListAdapter { app ->
-        val action = ApplicationListFragmentDirections
-            .actionApplicationListFragmentToAppDetailFragment(
-                title = app.title,
-                version = app.version,
-                packageName = app.packageName,
-                apkHash = app.apkHash.toString(),
-            )
-        findNavController().navigate(action)
+        viewLifecycleOwner.lifecycleScope.launch {
+            val action = ApplicationListFragmentDirections
+                .actionApplicationListFragmentToAppDetailFragment(
+                    title = app.title,
+                    version = app.version,
+                    packageName = app.packageName,
+                    packagePath = app.sourceDir,
+                )
+            findNavController().navigate(action)
+        }
     }
     val viewModel: ApplicationListViewModel by viewModels()
 

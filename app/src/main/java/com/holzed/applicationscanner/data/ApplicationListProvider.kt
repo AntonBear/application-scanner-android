@@ -16,33 +16,32 @@ interface ApplicationListProvider {
 @Suppress("TooGenericExceptionCaught", "SwallowedException")
 class ApplicationListProviderImpl @Inject constructor(
     private val packageManager: PackageManager,
-    private val hashProvider: HashProvider,
 ) : ApplicationListProvider {
 
     override suspend fun fetchApplicationInfo(): List<AppItemModel> = coroutineScope {
         val flag = PackageManager.GET_META_DATA
         val semaphore = Semaphore(permits = 8)
 
-        packageManager.getInstalledApplications(flag)
+        val apps = packageManager.getInstalledApplications(flag)
             .filter { packageManager.getLaunchIntentForPackage(it.packageName) != null }
-            .map { app ->
-                async {
-                    semaphore.withPermit {
-                        try {
-                            val packageInfo = packageManager.getPackageInfo(app.packageName, flag)
-                            val apkHash = hashProvider.calculateHash(app.sourceDir)
-                            AppItemModel(
-                                title = app.loadLabel(packageManager).toString(),
-                                version = with(packageInfo) { "$versionName ($versionCode)" },
-                                packageName = app.packageName,
-                                apkHash = apkHash,
-                            )
-                        } catch (_: Exception) {
-                            null
-                        }
+
+        apps.map { app ->
+            async {
+                semaphore.withPermit {
+                    try {
+                        val packageInfo = packageManager.getPackageInfo(app.packageName, flag)
+                        AppItemModel(
+                            title = app.loadLabel(packageManager).toString(),
+                            version = with(packageInfo) { "$versionName ($versionCode)" },
+                            packageName = app.packageName,
+                            sourceDir = app.sourceDir,
+                        )
+                    } catch (_: Exception) {
+                        null
                     }
                 }
             }
+        }
             .awaitAll()
             .filterNotNull()
     }

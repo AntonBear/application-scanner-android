@@ -28,12 +28,13 @@ class AppDetailFragment : Fragment(R.layout.fragment_app_detail) {
         _binding = FragmentAppDetailBinding.bind(view)
 
         val args = AppDetailFragmentArgs.fromBundle(requireArguments())
-        viewModel.setAppDetails(args.title, args.version, args.packageName, args.apkHash)
+        viewModel.loadDetails(args.title, args.version, args.packageName, args.packagePath)
 
         collectUiState()
 
         binding.btnLaunchApp.setOnClickListener {
-            val launchIntent = requireContext().packageManager.getLaunchIntentForPackage(args.packageName)
+            val launchIntent =
+                requireContext().packageManager.getLaunchIntentForPackage(args.packageName)
             launchIntent?.let {
                 startActivity(it)
             } ?: Toast.makeText(
@@ -51,11 +52,21 @@ class AppDetailFragment : Fragment(R.layout.fragment_app_detail) {
     private fun collectUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    binding.appTitle.text = state?.title
-                    binding.appVersion.text = state?.version
-                    binding.appPackage.text = state?.packageName
-                    binding.appHash.text = state?.hash
+                viewModel.state.collect { state ->
+                    when (state) {
+                        is AppDetailState.Loaded -> {
+                            binding.card.visibility = View.VISIBLE
+                            binding.progressBar.visibility = View.GONE
+                            binding.appTitle.text = state.title
+                            binding.appVersion.text = state.version
+                            binding.appPackage.text = state.packageName
+                            binding.appHash.text = state.hash
+                        }
+                        is AppDetailState.Loading -> {
+                            binding.card.visibility = View.GONE
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+                    }
                 }
             }
         }

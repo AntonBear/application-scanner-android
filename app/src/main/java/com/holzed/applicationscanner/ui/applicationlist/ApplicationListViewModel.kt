@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ApplicationListViewModel @Inject constructor(
-    private val appListProvider: ApplicationListProvider,
+    private val applicationListProvider: ApplicationListProvider,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : ViewModel() {
 
@@ -23,8 +23,7 @@ class ApplicationListViewModel @Inject constructor(
     fun loadAppList() {
         viewModelScope.launch(ioDispatcher) {
             _state.value = ApplicationListState.Loading
-
-            val apps = appListProvider.fetchApplicationInfo()
+            val apps = applicationListProvider.fetchApplicationInfo()
             _state.value = ApplicationListState.Loaded(apps)
         }
     }

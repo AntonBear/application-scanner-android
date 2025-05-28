@@ -29,7 +29,7 @@
             android:name="packageName"
             app:argType="string" />
         <argument
-            android:name="apkHash"
+            android:name="packagePath"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -4,5 +4,5 @@ data class AppItemModel(
     val title: String,
     val version: String,
     val packageName: String,
-    val apkHash: String?,
+    val sourceDir: String,
 )

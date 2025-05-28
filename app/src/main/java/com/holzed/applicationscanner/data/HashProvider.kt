@@ -11,12 +11,12 @@ import javax.inject.Inject
 
 interface HashProvider {
     /**
-     * Calculates the SHA-256 hash of the file at the given path.
+     * Calculates the MD5 hash of the file at the given path.
      *
-     * @param filePath The absolute path to the APK file.
+     * @param filePath The absolute path to the file.
      * @return The MD5 hash of the file as a lowercase hexadecimal string.
      * @throws IOException If an I/O error occurs while reading the file.
-     * @throws NoSuchAlgorithmException If SHA-256 algorithm is not available.
+     * @throws NoSuchAlgorithmException If MD5 algorithm is not available.
      */
     suspend fun calculateHash(filePath: String): String
 }
